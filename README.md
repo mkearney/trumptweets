@@ -1,4 +1,4 @@
-## Download all of Donald Trump's tweets
+## Download all of Donald Trump's tweets using R
 
 
 ```{r}

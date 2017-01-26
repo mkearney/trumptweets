@@ -8,6 +8,7 @@ install.packages("rtweet")
 ## load rtweet
 library(rtweet)
 
+## function to scrape IDs
 .trumptweets <- function(year) {
     ## build url
     url <- paste0("http://trumptwitterarchive.com/",

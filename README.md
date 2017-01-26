@@ -78,5 +78,5 @@ dev.off()
 ```
 
 <p align="center">
-<img src="trumptweets.png.png" alt="creating">
+<img src="trumptweets.png" alt="trumphashtags">
 </p>

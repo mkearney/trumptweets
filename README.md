@@ -59,7 +59,8 @@ p <- ts_filter(djt, "2 days", txt = "hashtags",
                        "Trump",
                        "Debates",
                        "DrainTheSwamp/AmericaFirst"))
-##library(ggplot2)
+install.packages("ggplot2")
+library(ggplot2)
 png("trumptweets.png", 7, 5, "in", res = 127.5)
 p %>%
     ggplot(aes(x = time, y = freq, color = filter)) +

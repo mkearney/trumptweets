@@ -9,7 +9,7 @@ install.packages("rtweet")
 library(rtweet)
 
 ## function to scrape IDs
-.trumptweets <- function(year) {
+.trumpids <- function(year) {
     ## build url
     url <- paste0("http://trumptwitterarchive.com/",
                   "data/realdonaldtrump/", year, ".json")
@@ -17,10 +17,10 @@ library(rtweet)
     jsonlite::fromJSON(url)[["id_str"]]
 }
 ## function to download status ids
-trumptweets <- function(trumptwitterarchive = FALSE) {
+trumpids <- function(trumptwitterarchive = FALSE) {
     if (trumptwitterarchive) {
         ids <- c(2009:2017) %>%
-            lapply(.trumptweets) %>%
+            lapply(.trumpids) %>%
             unlist(use.names = FALSE)
     } else {
         ids <- "data/realdonaldtrump-ids-2009-2017.csv" %>%
@@ -32,10 +32,10 @@ trumptweets <- function(trumptwitterarchive = FALSE) {
 ## function to download twitter data
 trumptweets <- function() {
     ## get archive of status ids
-    ids <- trumptweets()
+    ids <- trumpids()
     ## get newest trump tweets
     rt1 <- get_timeline(
-            "realdonaldtrump", since_id = ids[length(ids)])
+        "realdonaldtrump", since_id = ids[length(ids)])
     ## download archive
     message("    Downloading ", length(ids), " tweets...")
     rt2 <- lookup_statuses(ids[1:16000])
@@ -45,15 +45,16 @@ trumptweets <- function() {
     rbind(rt1, rt2, rt3)
 }
 
+## run function to download Trump's twitter archive
+djt <- trumptweets()
+
 ## save as excel file
 install.packages("openxlsx")
 openxlsx::write.xlsx(djt, "realdonaltrump-fullarchive.xlsx")
 
 ## save as csv file
-write.csv(djt, "realdonaltrump-fullarchive.csv")
-
-## run functions to download Trump's twitter archive
-djt <- trumptweets()
+write.csv(djt, "data/realdonaltrump-fullarchive.csv",
+          row.names = FALSE)
 ```
 
 Inspecting the data

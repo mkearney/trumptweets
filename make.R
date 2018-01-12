@@ -48,13 +48,15 @@ tw_rt_tmline <- rtweet::get_timeline("realdonaldtrump", n = 3200)
 tw_rt <- rbind(tw_rt_lookup, tw_rt_tmline)
 usrs <- rbind(users_data(tw_rt_lookup), users_data(tw_rt_tmline))
 
+## remove duplicates
 kp <- which(!duplicated(tw_rt$status_id))
 tw_rt <- tw_rt[kp, ]
 usrs <- usrs[kp, ]
 attr(tw_rt, "users") <- usrs
 
-
-rds <- paste0("data/trumptweets-", round(as.numeric(Sys.time()), 0), ".rds")
+## save withi timestamp
+timestamp <- round(as.numeric(Sys.time()), 0)
+rds <- paste0("data/trumptweets-", timestamp, ".rds")
 saveRDS(tw_rt, rds)
 
 save_as_csv(tw_rt, "data/trumptweets-1515775693.csv")

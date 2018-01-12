@@ -2,6 +2,19 @@
 output: github_document
 ---
 
+
+## Read data
+
+
+```{r}
+## read csv file
+#rdt <- read.csv("data/trumptweets-1515775693.tweets.csv")
+rdt <- readRDS("data/trumptweets-1515775693.rds")
+
+## preview data
+rdt
+```
+
 ## Download all of Donald Trump's tweets using R
 
 1. Install and load rtweet. `
@@ -38,7 +51,7 @@ function, `trumptweets()` to download the data
 #' \dontrun{
 #' ## get data
 #' tta <- get_trumptwitterarchive()
-#' 
+#'
 #' @export
 get_trumptwitterarchive <- function(years = NULL) {
   ## default to years 2008 through current
@@ -280,5 +293,17 @@ p %>%
 ```
 
 <p align="center">
-<img src="trumptweets.png" alt="trumphashtags">
+<img src="trumptweets.png" alt="tweets">
+</p>
+
+
+
+<p align="center">
+<img src="trumpsentiment.png" alt="sentiment">
+</p>
+
+
+
+<p align="center">
+<img src="rtfvs.png" alt="rt">
 </p>

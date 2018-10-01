@@ -34,7 +34,7 @@ library(rtweet)
 ```
 
 2. Read in the following 3 functions. You'll use the last
-function, `trumptweets()` to download the data
+function, `trumptweets()`, to download the data.
 
 ```{r, eval=FALSE}
 #' get_trumptwitterarchive
@@ -289,7 +289,7 @@ p %>%
 ## note: if Avenir Next Condensed will only work if currently
 ## installed on your machine. If that's the case, then either
 ## delete the family arguments or replace Avenir with the font
-## of your choosing
+## of your choosing.
 ```
 
 <p align="center">
